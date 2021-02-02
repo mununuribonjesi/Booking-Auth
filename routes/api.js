@@ -18,6 +18,12 @@ router.post('/register', function (req, res, next) {
   registration.register(req,res);
 });
 
+
+router.post('/resend',function(req,res,next)
+{
+  registration.resendVerification(req,res);
+});
+
 router.get('/confirmation',function(req,res,next){
   confirmation.confirmationPost(req,res);
 });

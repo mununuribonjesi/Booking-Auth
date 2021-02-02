@@ -19,15 +19,8 @@ var schema = new Schema({
     firstName: {type:String, require:[true,'Please enter a name']},
     lastName:{type:String,require:true},
     password:{type:String, require:[true,'please enter password'],minlength:[6,'Please enter a minimum of six characters']},
-    passwordResetToken:{type:String, require:true},
-    passwordResetExpires:{type:Date, require:true},
-    postCode:{type:String,require:true},
-    houseNumber:{type:String,require:true},
-    phoneNumber:{type:Number,require:true},
+    creation_dt:{type:Date, require:true},
     isVerified:{type:Boolean,default:false},
-    dob:{type:Date,require:true},
-    city:{type:String,require:true},
-    creation_dt:{type:Date, require:true}
 });
 
 
