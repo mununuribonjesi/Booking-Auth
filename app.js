@@ -7,6 +7,9 @@ const api = require('./routes/api');
 var express = require('express');
 var passport = require('passport');
 var bodyParser = require('body-parser')
+var cors = require('cors')
+
+
 
 require('./routes/config/passport-config');
 require('dotenv').config();
@@ -22,6 +25,7 @@ db.once("open", () => {
     console.log("sucessfully connected to MongoDb");
 });
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
