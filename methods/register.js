@@ -1,8 +1,11 @@
 const User = require('../models/user');
 const verificationToken = require('../models/verification');
 var crypto = require('crypto');
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const Moment = require('moment');
+
+
 
 
 async function resendVerification(req,res)
@@ -42,9 +45,10 @@ async function register(req, res) {
         //create and save user 
         user = new User({
             email: req.body.email,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             password: User.hashPassword(req.body.password),
+            dob:req.body.dob,
             creation_dt: Date.now()
           });
     
@@ -75,7 +79,20 @@ async function register(req, res) {
     };
 
 
+    async function checkEmail(req,res)
+    {
+
+        User.findOne({email:req.body.email},function(err,user){
+    
+            if(user) return res.status(400).send({msg:'The email address you have entered is already associated with another account.'});
+            
+        });
+
+    }
+
+
 module.exports = {
     register,
-    resendVerification
+    resendVerification,
+    checkEmail
 }

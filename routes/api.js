@@ -1,9 +1,9 @@
 "use strict";
 
 const express = require('express');
-const User = require('../models/user');
 const verificationToken = require('../models/verification');
 const router = express.Router();
+var update = require('../methods/update');
 
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
@@ -18,6 +18,14 @@ router.post('/register', function (req, res, next) {
   registration.register(req,res);
 });
 
+router.post('/email', function (req, res, next) {
+  registration.checkEmail(req,res);
+});
+
+
+router.post('/user', function (req, res, next) {
+  update.user(req,res);
+});
 
 router.post('/resend',function(req,res,next)
 {
