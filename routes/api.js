@@ -4,6 +4,7 @@ const express = require('express');
 const verificationToken = require('../models/verification');
 const router = express.Router();
 var update = require('../methods/update');
+var del = require('../methods/delete');
 
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
@@ -37,6 +38,10 @@ router.get('/confirmation',function(req,res,next){
 });
 
 // add user to database
+
+router.delete('/removeAccount',function(req,res,next){
+  del.deleteAccount(req,res);
+});
 
 
 //Login Api 
