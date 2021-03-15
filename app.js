@@ -8,15 +8,15 @@ var express = require('express');
 var passport = require('passport');
 var bodyParser = require('body-parser')
 var cors = require('cors')
-
-
-
 require('./routes/config/passport-config');
 require('dotenv').config();
 
 mongoose.connect(
-    "mongodb://localhost:27017/Authentication",
-    {useNewUrlParser: true}
+    'mongodb://MuniBanks:<225231mB>@docdb-2021-03-15-14-02-48.cluster-calvsd7c3i7n.us-east-1.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', 
+{ 
+        sslValidate: true,
+        useNewUrlParser: true
+},
 );
 
 mongoose.set('useFindAndModify', false);
@@ -43,6 +43,5 @@ app.use('/api',api);
 app.get('/', (req, res) => {
   res.send('Authentication Service')
 })
-const port = process.env.Port || 3000;
 
-app.listen(port);
+module.exports.handler = serverless(app);
