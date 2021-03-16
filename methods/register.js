@@ -20,7 +20,7 @@ async function resendVerification(req,res)
             {
                 if(err) { return res.status(500).send({ msg: err.message }); }
     
-                var msg = { from: 'mbonjesi@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/api\/confirmation?token=' + token.token + '\n' };
+                var msg = { from: 'mbonjesi@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/dev\/api\/confirmation?token=' + token.token + '\n' };
     
                 sgMail
                 .send(msg)
@@ -62,7 +62,7 @@ async function register(req, res) {
             {
                 if(err) { return res.status(500).send({ msg: err.message }); }
     
-                var msg = { from: 'mbonjesi@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/api\/confirmation?token=' + token.token + '\n' };
+                var msg = { from: 'mbonjesi@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/dev\/api\/confirmation?token=' + token.token + '\n' };
     
                 sgMail
                 .send(msg)
