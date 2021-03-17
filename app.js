@@ -6,11 +6,9 @@ const mongoose = require('mongoose');
 const api = require('./routes/api');
 var express = require('express');
 var passport = require('passport');
-var bodyParser = require('body-parser')
 var cors = require('cors')
 require('./routes/config/passport-config');
 require('dotenv').config();
-
 
 const connectionString = "mongodb+srv://MuniBanks:225231@cluster0.j1t7o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
@@ -33,8 +31,6 @@ db.once("open", () => {
 });
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session({
     secret: process.env.ACCESS_TOKEN_SECRET,
