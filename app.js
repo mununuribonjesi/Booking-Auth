@@ -10,7 +10,7 @@ var cors = require('cors')
 require('./routes/config/passport-config');
 require('dotenv').config();
 
-const connectionString = "mongodb+srv://MuniBanks:225231@cluster0.j1t7o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const connectionString = "mongodb+srv://MuniBanks:cluster0.j1t7o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 mongoose.connect(
     connectionString,
